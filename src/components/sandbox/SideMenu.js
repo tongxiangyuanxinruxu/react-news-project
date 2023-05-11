@@ -20,7 +20,6 @@ function SideMenu(props) {
   }, []);
 
   const [menu, setMenu] = useState([]);
-
   const {
     role: { rights },
   } = JSON.parse(localStorage.getItem("token"));
@@ -28,7 +27,6 @@ function SideMenu(props) {
   const checkPagePermission = (item) => {
     return item.pagepermisson && rights.includes(item.key);
   };
-
 const iconList = {
   "/user-manage/list" :<UserOutlined/>,
   "/right-manage/role/list" :<UserAddOutlined/>,
@@ -47,7 +45,6 @@ const iconList = {
 
   const renderMenu = (menuList) => {
     return menuList.map((item) => {
-      console.log(item);
       if (item.children?.length > 0 && checkPagePermission(item)) {
         return (
           <SubMenu key={item.key} icon={iconList[item.key]} title={item.title}>
