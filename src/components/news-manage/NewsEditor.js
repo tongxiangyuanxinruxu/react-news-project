@@ -10,7 +10,7 @@ export default function NewsEditor(props) {
 
   useEffect(() => {
     const html = props.content;
-    debugger;
+    // debugger;
     if (html === undefined) return;
     const contentBlock = htmlToDraft(html);
     if (contentBlock) {

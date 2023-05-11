@@ -11,8 +11,6 @@ import { connect } from "react-redux";
 const { Header } = Layout;
 
 const TopHeader = (props) => {
-  console.log(props);
-
   const changeCollapsed = () => {
     //改变state的isCollapsed
     props.changeCollapsed();

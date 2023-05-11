@@ -1,4 +1,9 @@
 import React, { useEffect, useState } from "react";
+import {UserOutlined,UserAddOutlined,
+  UnlockOutlined,FormOutlined,SnippetsOutlined,
+  FunnelPlotOutlined,SearchOutlined,
+  RotateRightOutlined,SafetyCertificateOutlined,DisconnectOutlined,
+  MenuOutlined} from '@ant-design/icons';
 import { Layout, Menu } from "antd";
 import { withRouter } from "react-router-dom";
 import axios from "axios";
@@ -24,11 +29,28 @@ function SideMenu(props) {
     return item.pagepermisson && rights.includes(item.key);
   };
 
+const iconList = {
+  "/user-manage/list" :<UserOutlined/>,
+  "/right-manage/role/list" :<UserAddOutlined/>,
+  "/right-manage/right/list" :<UnlockOutlined />,
+  '/news-manage/add':<FormOutlined />,
+  "/news-manage/draft":<SnippetsOutlined />,
+  "/news-manage/category":<FunnelPlotOutlined />,
+  "/audit-manage/audit":<SearchOutlined/>,
+  "/audit-manage/list":<MenuOutlined />,
+  "/publish-manage/unpublished":<RotateRightOutlined />,
+  "/publish-manage/published":<SafetyCertificateOutlined />,
+  "/publish-manage/sunset":<DisconnectOutlined />
+}
+
+
+
   const renderMenu = (menuList) => {
     return menuList.map((item) => {
+      console.log(item);
       if (item.children?.length > 0 && checkPagePermission(item)) {
         return (
-          <SubMenu key={item.key} icon={item.icon} title={item.title}>
+          <SubMenu key={item.key} icon={iconList[item.key]} title={item.title}>
             {renderMenu(item.children)}
           </SubMenu>
         );
@@ -37,7 +59,7 @@ function SideMenu(props) {
         checkPagePermission(item) && (
           <Menu.Item
             key={item.key}
-            icon={item.icon}
+            icon={iconList[item.key]}
             onClick={() => {
               props.history.push(item.key);
             }}
@@ -58,7 +80,7 @@ function SideMenu(props) {
   return (
     <Sider trigger={null} collapsible collapsed={props.isCollapsed}>
       <div style={{ display: "flex", height: "100%", flexDirection: "column" }}>
-        <div className="logo">全球新闻发布管理系统</div>
+        <div className="logo" style={{color:"#fff",textAlign:"center"}}>全球新闻发布管理系统</div>
         <div style={{ flex: 1, overflow: "auto" }}>
           <Menu
             theme="dark"

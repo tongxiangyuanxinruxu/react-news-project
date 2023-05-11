@@ -2,7 +2,7 @@ import React from "react";
 import { Form, Input, Checkbox, Button, message } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import "./Login.css";
-import Particles from "react-particles-js";
+import Particles from "react-tsparticles";
 import axios from "axios";
 
 export default function Login(props) {
@@ -13,6 +13,7 @@ export default function Login(props) {
         `/users?username=${values.username}&password=${values.password}&roleState=true&_expand=role`
       )
       .then((res) => {
+        console.log(res);
         if (res.data.length === 0) {
           message.error("用户名或密码错误");
         } else {
