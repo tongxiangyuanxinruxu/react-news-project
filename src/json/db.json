@@ -804,6 +804,21 @@
       "view": 0,
       "id": 23,
       "publishTime": 1683788792104
+    },
+    {
+      "title": "兴趣爱好",
+      "categoryId": 1,
+      "content": "<p>喜欢游泳，骑行，跑步</p>\n",
+      "region": "全球",
+      "author": "admin",
+      "roleId": 1,
+      "auditState": 2,
+      "publishState": 2,
+      "createTime": 1683796556790,
+      "star": 0,
+      "view": 0,
+      "id": 24,
+      "publishTime": 1683796575686
     }
   ]
 }
